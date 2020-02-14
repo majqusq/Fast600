@@ -15,18 +15,18 @@ while True:
             print('Amount of draws must be higher than 0')
     except ValueError:
         print('Amount of draws must be a number')
-    
+
 
 for l in range(drawAmount):
-    losowanie = []
+    draw = []
     loop = [1,2,3,4,5,6]
-    for i in loop:      
+    for i in loop:
         x = random.randint(1,32)
-        if x not in losowanie:
-            losowanie.append(x)
+        if x not in draw:
+            draw.append(x)
         else:
             loop.append(1)
-    nums.extend(losowanie)       
+    nums.extend(draw)
 values = []
 nums.sort()
 highest = {}
@@ -47,9 +47,12 @@ for num in nums:
                 print('=',end='')
             print(amount,'')
             values.append(num)
-print(max(temporary))
-        
 
-print(highest)
-
+for num in range(6):
+        highest[max(temporary,key=temporary.get)] = temporary[max(temporary,key=temporary.get)]
+        temporary.pop(max(temporary,key=temporary.get))
+print('Highest values:')
+for keys,values in highest.items():
+    print(keys,' x ',values)
+    
 os.system('pause')
